@@ -15,17 +15,15 @@
 
 Name:               firefox-non-release
 Version:            1.0
-Release:            6%{?dist}
+Release:            7%{?dist}
 Summary:            Firefox non-release editions collection, such as ESR, Developer, Nightly, etc.
 
 License:            MPLv1.1 or GPLv2+ or LGPLv2+
 URL:                https://www.mozilla.org/en-US/firefox/
 Source0:            firefox-non-release-local-sources.tar 
-Source8:            https://download-installer.cdn.mozilla.net/pub/firefox/releases/%{version_esr}/linux-x86_64/en-US/firefox-%{version_esr}.tar.xz
-Source9:            https://download-installer.cdn.mozilla.net/pub/devedition/releases/%{version_dev}/linux-x86_64/en-US/firefox-%{version_dev}.tar.xz
-Source10:            https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-%{version_nightly}.en-US.linux-x86_64.tar.xz
-
-ExclusiveArch:      x86_64
+Source8:            https://download-installer.cdn.mozilla.net/pub/firefox/releases/%{version_esr}/linux-%{?_arch}/en-US/firefox-%{version_esr}.tar.xz
+Source9:            https://download-installer.cdn.mozilla.net/pub/devedition/releases/%{version_dev}/linux-%{?_arch}/en-US/firefox-%{version_dev}.tar.xz
+Source10:            https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-%{version_nightly}.en-US.linux-%{?_arch}.tar.xz
 
 Recommends:         (gnome-browser-connector if gnome-shell)
 
@@ -34,29 +32,7 @@ BuildRequires:      chrpath
 Requires(post):     gtk-update-icon-cache
 
 %description
-This is a pre-beta release of Mozilla Firefox intended for Web developers and
-enthusiasts who want early access to new features. It receives new updates
-(almost) daily, adding and refining support for the very latest Web standards
-that won't make it into the stable release of Firefox for some months. It also
-comes with some addons for Web development enabled by default.
-
-You may actually find that Developer Edition works just fine for normal everyday
-use: Some users set it as their default Web browser. You can sign in to your
-normal Firefox account and sync your preferences, extensions, and bookmarks,
-etc. Or you can keep the Firefox versions separate, and use different profiles,
-even different browser UI themes. Firefox Developer Edition can install
-alongside the stable release of Firefox, making it easy to switch back and forth
-between the two versions.
-
-That being said, a lot of the technology here is still experimental, and there
-will very likely be some bugs, so just remember that by using Developer Edition,
-you're helping Mozilla make Firefox the best Web browser they can. And have fun!
-
-Bugs related to Firefox Developer Edition should be reported directly to Mozilla: 
-<https://bugzilla.mozilla.org/>
-
-Bugs related to this package should be reported at this GitHub project:
-<https://github.com/the4runner/firefox-dev/issues/>
+WIP
 
 %prep
 %setup -q -c
