@@ -4,3 +4,4 @@
 automation/node_modules
 automation/pnpm-lock.yaml
 *~
+*.tar

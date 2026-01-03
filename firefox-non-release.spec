@@ -9,25 +9,24 @@
 %global             internal_name_nightly firefox-nightly
 %global             debug_package %{nil}
 %global             version_esr 140.6.0esr
-%global             version_dev 146.0b7
+%global             version_dev 147.0b9
 %global             version_nightly 148.0a1
-
+%global             local_sources_dir firefox-non-release-local-sources
 
 Name:               firefox-non-release
 Version:            1.0
-Release:            3%{?dist}
-Summary:            Firefox Non Release
+Release:            6%{?dist}
+Summary:            Firefox non-release editions collection, such as ESR, Developer, Nightly, etc.
 
 License:            MPLv1.1 or GPLv2+ or LGPLv2+
 URL:                https://www.mozilla.org/en-US/firefox/
-Source0:            files_custom.tar 
+Source0:            firefox-non-release-local-sources.tar 
 Source8:            https://download-installer.cdn.mozilla.net/pub/firefox/releases/%{version_esr}/linux-x86_64/en-US/firefox-%{version_esr}.tar.xz
 Source9:            https://download-installer.cdn.mozilla.net/pub/devedition/releases/%{version_dev}/linux-x86_64/en-US/firefox-%{version_dev}.tar.xz
 Source10:            https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-%{version_nightly}.en-US.linux-x86_64.tar.xz
 
 ExclusiveArch:      x86_64
 
-Recommends:         (plasma-browser-integration if plasma-workspace)
 Recommends:         (gnome-browser-connector if gnome-shell)
 
 BuildRequires:      chrpath
@@ -86,17 +85,17 @@ chrpath --delete %{buildroot}/opt/firefox-non-release/%{application_name_esr}/li
 chrpath --delete %{buildroot}/opt/firefox-non-release/%{application_name_dev}/libonnxruntime.so || :
 chrpath --delete %{buildroot}/opt/firefox-non-release/%{application_name_nightly}/libonnxruntime.so || :
 
-%__install -D -m 0644 files_custom/%{application_name_esr}.desktop -t %{buildroot}%{_datadir}/applications
-%__install -D -m 0644 files_custom/%{application_name_dev}.desktop -t %{buildroot}%{_datadir}/applications
-%__install -D -m 0644 files_custom/%{application_name_nightly}.desktop -t %{buildroot}%{_datadir}/applications
+%__install -D -m 0644 %{local_sources_dir}/%{application_name_esr}.desktop -t %{buildroot}%{_datadir}/applications
+%__install -D -m 0644 %{local_sources_dir}/%{application_name_dev}.desktop -t %{buildroot}%{_datadir}/applications
+%__install -D -m 0644 %{local_sources_dir}/%{application_name_nightly}.desktop -t %{buildroot}%{_datadir}/applications
 
-%__install -D -m 0444 files_custom/policies.json -t %{buildroot}/opt/firefox-non-release/%{application_name_esr}/distribution
-%__install -D -m 0444 files_custom/policies.json -t %{buildroot}/opt/firefox-non-release/%{application_name_dev}/distribution
-%__install -D -m 0444 files_custom/policies.json -t %{buildroot}/opt/firefox-non-release/%{application_name_nightly}/distribution
+%__install -D -m 0444 %{local_sources_dir}/policies.json -t %{buildroot}/opt/firefox-non-release/%{application_name_esr}/distribution
+%__install -D -m 0444 %{local_sources_dir}/policies.json -t %{buildroot}/opt/firefox-non-release/%{application_name_dev}/distribution
+%__install -D -m 0444 %{local_sources_dir}/policies.json -t %{buildroot}/opt/firefox-non-release/%{application_name_nightly}/distribution
 
-%__install -D -m 0755 files_custom/%{application_name_esr} -t %{buildroot}%{_bindir}
-%__install -D -m 0755 files_custom/%{application_name_dev} -t %{buildroot}%{_bindir}
-%__install -D -m 0755 files_custom/%{application_name_nightly} -t %{buildroot}%{_bindir}
+%__install -D -m 0755 %{local_sources_dir}/%{application_name_esr} -t %{buildroot}%{_bindir}
+%__install -D -m 0755 %{local_sources_dir}/%{application_name_dev} -t %{buildroot}%{_bindir}
+%__install -D -m 0755 %{local_sources_dir}/%{application_name_nightly} -t %{buildroot}%{_bindir}
 
 %__ln_s ../../../../../../opt/firefox-non-release/%{application_name_esr}/browser/chrome/icons/default/default128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{full_name_esr}.png
 %__ln_s ../../../../../../opt/firefox-non-release/%{application_name_esr}/browser/chrome/icons/default/default64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/%{full_name_esr}.png

@@ -15,4 +15,4 @@ fi
 
 export MOZ_APP_LAUNCHER="$0"
 
-exec /opt/firefox-non-release/firefox-esr/firefox "$@"
+exec /opt/firefox-non-release/firefox-dev/firefox "$@"

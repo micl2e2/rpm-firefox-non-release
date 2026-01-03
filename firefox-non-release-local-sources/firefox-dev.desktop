@@ -42,9 +42,9 @@ Comment[pt]=Navegue na Internet
 Comment[pt_BR]=Navegue na Internet
 Comment[sk]=Prehliadanie internetu
 Comment[sv]=Surfa på webben
-Exec=firefox-aurora %u
+Exec=firefox-dev %u
 StartupWMClass=firefox-dev
-Icon=firefox-developer-edition
+Icon=firefox-dev-edition
 Terminal=false
 Type=Application
 Categories=Network;WebBrowser;
@@ -267,11 +267,11 @@ Name[wo]=Panlanteeru biir bu bees
 Name[xh]=Ifestile yangasese entsha
 Name[zh_CN]=新建隐私浏览窗口
 Name[zh_TW]=新增隱私視窗
-Exec=firefox-aurora --private-window %u
+Exec=firefox-dev --private-window %u
 
 [Desktop Action profile-manager-window]
 Name=Open the Profile Manager
 Name[cs]=Správa profilů
 Name[de]=Profilverwaltung öffnen
 Name[fr]=Ouvrir le gestionnaire de profils
-Exec=firefox-aurora --ProfileManager
+Exec=firefox-dev --ProfileManager
